@@ -17,7 +17,8 @@
   </h3>
   <p>We now calculate the "fair" car fare based on how much the riders are expected to pay, comparing to other riders.</p>
   <h3 v-for="(fairFare, i) in fairRiderFare" :key="i">
-    Rider {{ i + 1 }}'s fair fare: {{fairFare}}
+    Rider {{ i + 1 }}'s fair fare: {{fairFare.toFixed(2)}}
+    <!-- <span class="saves">saves {{(1 - (fairFare / riderDirectFare[i].value)).toFixed(2) * 100}}%!</span> -->
   </h3>
 
 </template>
@@ -41,7 +42,7 @@ const calculation = {
         ({ value }) => (value / this.totalDirectFare) * this.totalPaidCabFare
       )
       return fairRiderFare
-    }
+    },
   },
   methods: {
     addRider() {
